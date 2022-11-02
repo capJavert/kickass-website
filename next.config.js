@@ -29,6 +29,18 @@ const nextConfig = {
                 headers: securityHeaders
             }
         ]
+    },
+    rewrites: async () => {
+        return [
+            {
+                source: '/',
+                destination: '/me/index.html'
+            },
+            {
+                source: '/me',
+                destination: '/me/index.html'
+            }
+        ]
     }
 }
 
