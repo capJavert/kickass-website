@@ -45,8 +45,12 @@ const nextConfig = {
     rewrites: async () => {
         return [
             {
-                source: '/me',
+                source: '/me-old',
                 destination: '/me/index.html'
+            },
+            {
+                source: '/api/:path*',
+                destination: 'https://api.kickass.website/:path*'
             }
         ]
     }
