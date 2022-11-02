@@ -30,12 +30,17 @@ const nextConfig = {
             }
         ]
     },
-    rewrites: async () => {
+    redirects: async () => {
         return [
             {
                 source: '/',
-                destination: '/me/index.html'
-            },
+                destination: '/me',
+                permanent: false
+            }
+        ]
+    },
+    rewrites: async () => {
+        return [
             {
                 source: '/me',
                 destination: '/me/index.html'
