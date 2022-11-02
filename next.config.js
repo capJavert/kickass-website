@@ -22,6 +22,9 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     poweredByHeader: false,
+    experimental: {
+        appDir: true
+    },
     headers: async () => {
         return [
             {
