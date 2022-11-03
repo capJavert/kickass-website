@@ -45,12 +45,17 @@ const nextConfig = {
     rewrites: async () => {
         return [
             {
-                source: '/me-old',
-                destination: '/me/index.html'
-            },
-            {
                 source: '/api/:path*',
                 destination: 'https://api.kickass.website/:path*'
+            }
+        ]
+    },
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'avatars0.githubusercontent.com',
+                pathname: '/u/9803078'
             }
         ]
     }
