@@ -22,6 +22,9 @@ const nextConfig = {
     reactStrictMode: true,
     swcMinify: true,
     poweredByHeader: false,
+    experimental: {
+        appDir: true
+    },
     headers: async () => {
         return [
             {
@@ -42,8 +45,17 @@ const nextConfig = {
     rewrites: async () => {
         return [
             {
-                source: '/me',
-                destination: '/me/index.html'
+                source: '/api/:path*',
+                destination: 'https://api.kickass.website/:path*'
+            }
+        ]
+    },
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'avatars0.githubusercontent.com',
+                pathname: '/u/9803078'
             }
         ]
     }
