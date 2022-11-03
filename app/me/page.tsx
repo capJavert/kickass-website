@@ -2,12 +2,22 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Fragment } from 'react'
 
+const handleResponse = async (response: Response) => {
+    const result = await response.json()
+
+    if (!response.ok) {
+        throw new Error(result.message || `HTTP Error ${response.status}`)
+    }
+
+    return result
+}
+
 const getData = async () => {
     const [page, me, skills, social] = await Promise.all([
-        fetch(`${process.env.API_URL || process.env.VERCEL_URL}/api/pages/me`).then(res => res.json()),
-        fetch(`${process.env.API_URL || process.env.VERCEL_URL}/api/me`).then(res => res.json()),
-        fetch(`${process.env.API_URL || process.env.VERCEL_URL}/api/skills`).then(res => res.json()),
-        fetch(`${process.env.API_URL || process.env.VERCEL_URL}/api/social`).then(res => res.json())
+        fetch(`${process.env.API_URL || process.env.VERCEL_URL}/pages/me`).then(handleResponse),
+        fetch(`${process.env.API_URL || process.env.VERCEL_URL}/me`).then(handleResponse),
+        fetch(`${process.env.API_URL || process.env.VERCEL_URL}/skills`).then(handleResponse),
+        fetch(`${process.env.API_URL || process.env.VERCEL_URL}/social`).then(handleResponse)
     ])
 
     return {
@@ -127,7 +137,5 @@ const Page = async () => {
         </div>
     )
 }
-
-export const dynamicParams = true
 
 export default Page
