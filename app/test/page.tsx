@@ -2,6 +2,7 @@ import { Suspense } from 'react'
 
 import Click from './Click'
 import Lazy from './Lazy'
+import LazyClient from './LazyClient'
 
 const Page = () => {
     return (
@@ -11,6 +12,7 @@ const Page = () => {
                 {/* @ts-expect-error Server Component */}
                 <Lazy />
             </Suspense>
+            <LazyClient />
             <br />
             <Click />
         </>
