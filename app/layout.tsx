@@ -46,7 +46,7 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                 {/* eslint-enable @next/next/no-page-custom-font, @next/next/google-font-display */}
             </head>
             <body>{children}</body>
-            {process.env.NODE_ENV === 'production' && (
+            {process.env.NODE_ENV === 'production' && !!process.env.GA_ID && (
                 <Script
                     id="gtag-init"
                     strategy="afterInteractive"
