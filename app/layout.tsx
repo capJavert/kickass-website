@@ -1,7 +1,5 @@
 import '../styles/globals.css'
 
-import Script from 'next/script'
-
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <html lang="en">
@@ -46,23 +44,6 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
                 {/* eslint-enable @next/next/no-page-custom-font, @next/next/google-font-display */}
             </head>
             <body>{children}</body>
-            {process.env.NODE_ENV === 'production' && !!process.env.GA_ID && (
-                <Script
-                    id="gtag-init"
-                    strategy="afterInteractive"
-                    dangerouslySetInnerHTML={{
-                        __html: `
-                        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-                            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-                        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-                        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-                    
-                        ga('create', '${process.env.GA_ID}', 'auto');
-                        ga('send', 'pageview');
-                    `
-                    }}
-                />
-            )}
         </html>
     )
 }
