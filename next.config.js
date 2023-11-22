@@ -39,6 +39,16 @@ const nextConfig = {
                 source: '/',
                 destination: '/me',
                 permanent: false
+            },
+            {
+                source: '/insomnia',
+                destination: 'https://insomnia.kickass.website',
+                permanent: true
+            },
+            {
+                source: '/clippy',
+                destination: 'https://clippy.kickass.website',
+                permanent: true
             }
         ]
     },
